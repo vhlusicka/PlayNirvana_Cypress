@@ -1,29 +1,21 @@
 /// <reference types="cypress" />
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-const url = "https://www.stage-xtreme-tenant.com/"
-
-// Navigation to homepage
-Given('I navigate to the ExtremeBets homepage', () => {
-    cy.visit(url);
-})
-
-// Navigation to register form
-When('I click on the JOIN button', () => {
-    cy.get('.navbar').get('.join-btn-web').click();
-})
+const email = Cypress.env('userEmail');
+const password = Cypress.env('userPassword');
 
 When('I am located on Create Account form', () => {
     cy.get('.register-card').find('.title')
         .should('contain', 'Create Account');
 })
 
-Then('I enter {string} as an Email', (email) => {
+Then('I enter an Email to email textbox', () => {
     cy.get('#emailAddress').type(email);
 })
 
-Then('I enter {string} as a Password', (password) => {
+Then('I enter Password to password textbox', () => {
     cy.get('.password-input').type(password);
+    cy.pause();
 })
 
 Then('I select {string} as a Country', (country) => {

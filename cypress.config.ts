@@ -24,4 +24,8 @@ export default defineConfig({
       return config;
     },
   },
+  env: {
+    userEmail: "vilim.test10@mailinator.com",
+    userPassword: "Pass1234!"
+  }
 });

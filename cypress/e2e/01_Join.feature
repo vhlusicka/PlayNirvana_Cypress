@@ -8,8 +8,10 @@ Feature: ExtremeBets - Registration
     @smoke
     Scenario: Registration of new account
         Given I am located on Create Account form
-        When I enter "vilim.test07@mailinator.com" as an Email
-        And I enter "Pass1234!" as a Password
+        # When I enter "vilim.test09@mailinator.com" as an Email
+        When I enter an Email to email textbox
+        # And I enter "Pass1234!" as a Password
+        And I enter Password to password textbox
         And I select "Germany" as a Country
         And I select "JPY(¥)" as a Currency
         And I click Next button
