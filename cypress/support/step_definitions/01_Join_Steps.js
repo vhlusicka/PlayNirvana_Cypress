@@ -15,7 +15,6 @@ Then('I enter an Email to email textbox', () => {
 
 Then('I enter Password to password textbox', () => {
     cy.get('.password-input').type(password);
-    cy.pause();
 })
 
 Then('I select {string} as a Country', (country) => {
@@ -99,4 +98,26 @@ Then('I click on Finish Registration button to confirm the registration', () => 
     cy.wait('@registerUser').then((interception) => {
         expect(interception.response.statusCode).to.equal(200); // Assert status code
     });
+})
+
+Then('I enter Email', () => {
+    cy.get('#login-modal').find('#loginUsername')
+        .type(email);
+})
+
+Then('I enter Password', () => {
+    cy.get('#login-modal').find('#loginPassword')
+        .type(password);
+})
+
+Then('I click to confirm the login', () => {
+    cy.get('#login-modal').find('#loginButton').click();
+})
+
+Then('I confirm we are successfully logged in', () => {
+    cy.get('.icon-user-logged-in').should('be.visible');
+})
+
+Then('I click Sign Out from the sidebar', () => {
+    cy.get('.menu-drawer-right').contains('Sign Out').click()
 })

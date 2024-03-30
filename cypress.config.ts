@@ -4,6 +4,8 @@ import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-prepro
 import createEsbuildPlugin from "@badeball/cypress-cucumber-preprocessor/esbuild";
 
 export default defineConfig({
+  viewportWidth: 1024,
+  viewportHeight: 800,
   e2e: {
     specPattern: "**/*.feature",
     async setupNodeEvents(
@@ -25,7 +27,7 @@ export default defineConfig({
     },
   },
   env: {
-    userEmail: "vilim.test10@mailinator.com",
+    userEmail: "vilim.test21@mailinator.com",
     userPassword: "Pass1234!"
   }
 });

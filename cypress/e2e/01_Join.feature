@@ -3,14 +3,11 @@ Feature: ExtremeBets - Registration
 
     Background: Precondition
         Given I navigate to the ExtremeBets homepage
-        When I click on the JOIN button
 
     @smoke
     Scenario: Registration of new account
-        Given I am located on Create Account form
-        # When I enter "vilim.test09@mailinator.com" as an Email
+        Given I click on the JOIN button
         When I enter an Email to email textbox
-        # And I enter "Pass1234!" as a Password
         And I enter Password to password textbox
         And I select "Germany" as a Country
         And I select "JPY(¥)" as a Currency
@@ -27,3 +24,14 @@ Feature: ExtremeBets - Registration
         # And I check "Terms and conditions" checkbox
         # And I check "Privacy Policy" checkbox
         Then I click on Finish Registration button to confirm the registration
+
+
+    Scenario: Login and logout with newly created user
+        Given I navigate to the ExtremeBets homepage
+        When I click on Login button
+        And I enter Email
+        And I enter Password
+        And I click to confirm the login
+        And I confirm we are successfully logged in
+        And I click on user icon
+        And I click Sign Out from the sidebar
