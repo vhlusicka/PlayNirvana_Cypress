@@ -18,9 +18,10 @@
 - `npx cypress open`
 
 #### Run Cypress with tags:
-- Run with one tag: `npx cypress run -e TAGS='@join' --headed` or `npx cypress run -e TAGS='@regression' --headed`
-- Run with two tags: `npx cypress run -e TAGS='@login or @pim' --headed`
+- Run with one tag: `npx cypress run -e TAGS='@join' --headed`
+- Run with two tags: `npx cypress run -e TAGS='@join or @validations' --headed`
 - Run by excluding a tag: `npx cypress run -e TAGS='(@login or @pim) and not @smoke' --headed`
+- Run this to execute the **whole suite**: `npx cypress run -e TAGS='@regression' --headed`
 
 #### How to run Cypress with specific browser:
 - Add the option `--browser chrome` to the running command
@@ -37,11 +38,11 @@ Majority of testing logic is contained in two types of files:
 
 - **.feature** files which are located within **e2e** folder
     - These files contain a **description** of test scenarios which are written in human-readable format called Gherkin, and it defines the login and order in which the tests are executed. These steps can be reused whenever and wherever needed and it is encouraged for steps to be reused if possible. <br>
-    Example of step: `Given I navigate to the OrangeHRM Login page`
+    Example of step: `I navigate to the ExtremeBets homepage`
 
 - **.js** files which are located within **support/step_definitions** folder
     - These files are called **spec files** (or test files). They contain an actual test code written in Cypress and are based on Javascript. <br>
-    By executing the step `Given I navigate to the OrangeHRM Login page`, all the code defined in the .js spec file within that step will be executed. <br>
+    By executing the step `I navigate to the ExtremeBets homepage`, all the code defined in the .js spec file within that step will be executed. <br>
     It can consist of only one command, and it can become rather complex - it all depends on how the author of these tests defined it. <br>
     Example of command in spec file for mentioned step:
     ```js
