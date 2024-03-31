@@ -11,6 +11,7 @@ When('I am located on Create Account form', () => {
 
 Then('I enter an Email to email textbox', () => {
     cy.get('#emailAddress').type(email);
+    cy.log(email);
 })
 
 Then('I enter Password to password textbox', () => {

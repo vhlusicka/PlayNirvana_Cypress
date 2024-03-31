@@ -27,7 +27,9 @@ export default defineConfig({
     },
   },
   env: {
-    userEmail: "vilim.test22@mailinator.com",
-    userPassword: "Pass1234!"
+    // userEmail: "vilim.test22@mailinator.com",
+    userPassword: "Pass1234!",
+    // randomInteger: Math.floor(Math.random() * 1000) + 1000,
+    userEmail: "vilim.test" + (Math.floor(Math.random() * 2000) + 1000) + "@mailinator.com"
   }
 });
