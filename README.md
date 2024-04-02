@@ -15,10 +15,11 @@
 - `npm install cypress --save-dev`
 
 #### Run Cypress via UI app
+
 - `npx cypress open`
 
 #### Run Cypress with tags:
-- Run this to execute the **whole suite**: `npx cypress run -e TAGS='@regression' --headed`
+- <ins>Run this to execute the **whole suite**</ins>: `npx cypress run -e TAGS='@regression' --headed`
 - Run with one tag: `npx cypress run -e TAGS='@join' --headed`
 - Run with two tags: `npx cypress run -e TAGS='@join or @validations' --headed`
 - Run by excluding a tag: `npx cypress run -e TAGS='(@login or @pim) and not @smoke' --headed`
