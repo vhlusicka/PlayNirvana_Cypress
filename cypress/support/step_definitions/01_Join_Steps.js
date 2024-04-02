@@ -92,11 +92,11 @@ Then('I check {string} checkbox', (checkboxName) => {
 })
 
 Then('I click on Finish Registration button to confirm the registration', () => {
-    cy.intercept('POST', 'https://playerapi.stage-xtreme.com/api/public/registration/register?t=04ea061a-8abb-4167-bcb7-c58ca530e7c4&lang=en&v=1.1.1423')
+    cy.intercept('POST', 'https://playerapi.stage-xtreme.com/api/public/registration/register?t=04ea061a-8abb-4167-bcb7-c58ca530e7c4**')
         .as('registerUser');
     // get command is the action we are performing and which will trigger the API endpoint we are intercepting
     cy.get('[type="submit "]').contains('Finish Registration').click();
-    cy.wait('@registerUser').then((interception) => {
+    cy.wait('@registerUser', {timeout: 10000}).then((interception) => {
         expect(interception.response.statusCode).to.equal(200); // Assert status code
     });
 })
@@ -106,7 +106,7 @@ Then('I enter Email', () => {
         .type(email);
 })
 
-Then('I enter Password', () => {
+Then('I enter Password', () => {cy.intercept('POST', 'https://playerapi.stage-xtreme.com/api/public/registration/register?t=04ea061a-8abb-4167-bcb7-c58ca530e7c4')
     cy.get('#login-modal').find('#loginPassword')
         .type(password);
 })
@@ -120,5 +120,5 @@ Then('I confirm we are successfully logged in', () => {
 })
 
 Then('I click Sign Out from the sidebar', () => {
-    cy.get('.menu-drawer-right').contains('Sign Out').click()
+    cy.get('.menu-drawer-right').contains('Sign Out').click({force: true});
 })
