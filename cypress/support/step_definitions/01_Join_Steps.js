@@ -101,14 +101,19 @@ Then('I click on Finish Registration button to confirm the registration', () => 
     });
 })
 
-Then('I enter Email', () => {
+Then('I enter newly created user Email', () => {
     cy.get('#login-modal').find('#loginUsername')
         .type(email);
 })
 
-Then('I enter Password', () => {
+Then('I enter user Password', () => {
     cy.get('#login-modal').find('#loginPassword')
         .type(password);
+})
+
+Then('I enter existing user {string} Email', (existingEmail) => {
+    cy.get('#login-modal').find('#loginUsername')
+        .type(existingEmail);
 })
 
 Then('I click to confirm the login', () => {

@@ -27,10 +27,18 @@ Feature: ExtremeBets - Registration
 
 
     Scenario: Login and logout with newly created user
-        Given I navigate to the ExtremeBets homepage
-        When I click on Login button
-        And I enter Email
-        And I enter Password
+        Given I click on Login button
+        And I enter newly created user Email
+        And I enter user Password
+        And I click to confirm the login
+        And I confirm we are successfully logged in
+        And I click on user icon
+        And I click Sign Out from the sidebar
+
+    Scenario: Login and logout with existing user
+        Given I click on Login button
+        And I enter existing user "vilim.test9333@mailinator.com" Email
+        And I enter user Password
         And I click to confirm the login
         And I confirm we are successfully logged in
         And I click on user icon
