@@ -106,7 +106,7 @@ Then('I enter Email', () => {
         .type(email);
 })
 
-Then('I enter Password', () => {cy.intercept('POST', 'https://playerapi.stage-xtreme.com/api/public/registration/register?t=04ea061a-8abb-4167-bcb7-c58ca530e7c4')
+Then('I enter Password', () => {
     cy.get('#login-modal').find('#loginPassword')
         .type(password);
 })
