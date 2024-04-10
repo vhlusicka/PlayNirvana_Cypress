@@ -49,8 +49,54 @@ Then('I select {string} {int} {int} as a Date of Birth', (birthMonth, birthDay, 
         .find('[role="option"]')
         .contains(birthMonth)
         .click();
-    // Selecting the DAY
-    cy.get('#day').type(birthDay);
+    // Selecting the DAY also triggers a validation if entered day of birth matches the month limit, including leap year check
+    switch (birthMonth) {
+        case 'January':
+        case 'March':
+        case 'May':
+        case 'July':
+        case 'August':
+        case 'October':
+        case 'December':
+            if ( (birthDay <= 31) && (birthDay > 0) ) {
+                cy.get('#day').type(birthDay);
+            }
+            else {
+                throw new Error("birthDay is greater than 31 or smaller than 1")
+            };
+            break;
+        case 'April':
+        case 'June':
+        case 'September':
+        case 'November':
+            if ( (birthDay <= 30) && (birthDay > 0) ) {
+                cy.get('#day').type(birthDay);
+            }
+            else {
+                throw new Error("birthDay is greater than 30 or smaller than 1")
+            };
+            break;
+        case 'February':
+            if ( birthYear % 4 == 0 ) {
+                if ( (birthDay <= 29) && (birthDay > 0) ) {
+                    cy.get('#day').type(birthDay);
+                }
+                else {
+                    throw new Error("birthDay is greater than 29 or smaller than 1")
+                };
+                break;
+            }
+            else {
+                if ( (birthDay <= 28) && (birthDay > 0) ) {
+                    cy.get('#day').type(birthDay);
+                }
+                else {
+                    throw new Error("birthDay is greater than 28 or smaller than 1")
+                };
+                break;
+            }
+    }
+    cy.pause();
     // Selecting the YEAR
     cy.get('#year').type(birthYear);
 })

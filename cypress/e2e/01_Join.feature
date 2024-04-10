@@ -14,7 +14,7 @@ Feature: ExtremeBets - Registration
         And I click Next button
         And I enter "Hloo" as Last name
         And I enter "Vil" as First name
-        And I select "March" 29 1990 as a Date of Birth
+        And I select "June" 30 2003 as a Date of Birth
         And I select "Male" as a gender
         And I select "Frankf" as a City
         And I confirm Postal Code is automatically populated
